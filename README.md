@@ -7,4 +7,9 @@ I had been having a lot of trouble finding ISOs so I thought of making a page de
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://gitHub.com/sortedcord/aciso/graphs/commit-activity)
 
 <br>
+
 ![Website homepage](assets/img/ss.png)
+
+### [insert random distro here] is not listed
+
+Create a page for it following the standard structure and then create a pull request.
