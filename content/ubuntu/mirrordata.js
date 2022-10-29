@@ -1,4 +1,4 @@
-{
+const mirrordata = {
     "Argentina": [
         {
             "name": "Zero.com.ar",
@@ -35,7 +35,7 @@
             "speed": "1 Gbps"
         },
         {
-            "name": "Servers Australia",
+            "name": "servers Australia",
             "url": "http://ubuntu.mirror.serversaustralia.com.au/ubuntu-releases/",
             "speed": "1 Gbps"
         },
@@ -849,7 +849,7 @@
             "speed": "20 Gbps"
         },
         {
-            "name": "FamaServer",
+            "name": "Famaserver",
             "url": "https://mirror.famaserver.com/ubuntu-cd/",
             "speed": "20 Gbps"
         },
@@ -1084,7 +1084,7 @@
             "speed": "1 Gbps"
         },
         {
-            "name": "IP Serverone Solutions Sdn Bhd",
+            "name": "IP serverone Solutions Sdn Bhd",
             "url": "https://mirrors.ipserverone.com/ubuntu-releases/",
             "speed": "1 Gbps"
         },
@@ -1177,7 +1177,7 @@
             "speed": "10 Gbps"
         },
         {
-            "name": "Serverius",
+            "name": "serverius",
             "url": "http://mirror.serverius.net/ubuntu-releases/",
             "speed": "10 Gbps"
         },
@@ -1758,7 +1758,7 @@
             "speed": "1 Gbps"
         },
         {
-            "name": "Turhost Hosting & Server",
+            "name": "Turhost Hosting & server",
             "url": "http://ubuntu.turhost.com/ubuntu-releases/",
             "speed": "1 Gbps"
         },
