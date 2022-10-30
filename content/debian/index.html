@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Debian</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+
+<body>
+    <h2>Debian ISO buffet</h2>
+    <table class="main">
+        <tr>
+            <td>Version</td>
+            <td><select name="version" id="version">
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Last Modified</td>
+            <td id="last_modified"></td>
+        </tr>
+        <tr>
+            <td>Arch</td>
+            <td><select name="architecture" id="architecture">
+
+                </select></td>
+        </tr>
+        <tr>
+            <td>Desktop Env</td>
+            <td><select name="desktop" id="desktop">
+
+                </select></td>
+        </tr>
+        <tr>
+            <td>File Name</td>
+            <td id="filename"></td>
+        </tr>
+        <tr>
+            <td>File URL</td>
+            <td id="fileurl"></td>
+        </tr>
+        <tr>
+            <td>Last Modified</td>
+            <td id="filemodified"></td>
+        </tr>
+        <tr>
+            <td>Size</td>
+            <td id="size"></td>
+    </table>
+    <br>
+    <tr>
+        <td class="" style="border:none;"><button onclick="generateDownloadLink()">Direct Download</button></td>
+        <td class="green" style="border:none;"><button onclick="generateTorrentLink()">Download Torrent</button></td>
+        <td class="red" style="border:none;"><button onclick="generateZsyncLink()">Download Zsync</button></td>
+    </tr>
+
+    <script src="data.js"></script>
+    <script>
+    // Populate version select from isodata
+    var versionSelect = document.getElementById("version");
+    var archSelect = document.getElementById("architecture");
+
+
+    for (var version in isodata) {
+        var option = document.createElement("option");
+        option.value = version;
+        option.text = version;
+        versionSelect.appendChild(option);
+    }
+
+    // Show last_modified when version is changed
+    versionSelect.addEventListener("change", function() {
+        var version = versionSelect.value;
+        var arch = archSelect.value;
+        var last_modified = isodata[version]["last_modified"];
+        document.getElementById("last_modified").innerHTML = last_modified;
+        updateArchSelect(version);
+    });
+
+
+    // Change architecture options when version is changed
+    versionSelect.addEventListener("change", function() {
+        var archSelect = document.getElementById("architecture");
+        var archs = isodata[versionSelect.value].archs;
+        archSelect.innerHTML = "";
+        for (var arch in archs) {
+            var option = document.createElement("option");
+            option.value = arch;
+            option.text = arch;
+            archSelect.appendChild(option);
+        }
+
+        var desktopSelect = document.getElementById("desktop");
+        var desktops = isodata[versionSelect.value].archs[archSelect.value];
+        desktopSelect.innerHTML = "";
+        for (var desktop in desktops) {
+            var option = document.createElement("option");
+            option.value = desktop;
+            option.text = desktop;
+            desktopSelect.appendChild(option);
+        }
+
+        var version = versionSelect.value;
+        var arch = archSelect.value;
+        var desktop = document.getElementById("desktop").value;
+        var file_name = isodata[version].archs[arch][desktop].file;
+        document.getElementById("filename").innerHTML = file_name;
+    });
+
+    // Change desktop options when architecture is changed
+    archSelect.addEventListener("change", function() {
+        var desktopSelect = document.getElementById("desktop");
+        var desktops = isodata[versionSelect.value].archs[archSelect.value];
+        desktopSelect.innerHTML = "";
+        for (var desktop in desktops) {
+            var option = document.createElement("option");
+            option.value = desktop;
+            option.text = desktop;
+            desktopSelect.appendChild(option);
+        }
+
+        var version = versionSelect.value;
+        var arch = archSelect.value;
+        var desktop = document.getElementById("desktop").value;
+        var file_name = isodata[version].archs[arch][desktop].file;
+        document.getElementById("filename").innerHTML = file_name;
+    });
+
+    // Change file_name when desktop is changed
+    document.getElementById("desktop").addEventListener("change", function() {
+        var version = versionSelect.value;
+        var arch = archSelect.value;
+        var desktop = document.getElementById("desktop").value;
+        var file_name = isodata[version].archs[arch][desktop].file;
+        document.getElementById("filename").innerHTML = file_name;
+    });
+
+    // show arch onload
+    versionSelect.dispatchEvent(new Event("change"));
+
+    
+    
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>
